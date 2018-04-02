@@ -8,6 +8,7 @@ import { CheckTripDetailsComponent } from './check-trip-details/check-trip-detai
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
     CheckTripFormComponent,
     CheckTripDetailsComponent,
     DashboardComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
