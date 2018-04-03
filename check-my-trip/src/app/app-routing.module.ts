@@ -8,12 +8,12 @@ import { NotFoundPageComponent} from "./not-found-page/not-found-page.component"
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: '/404', pathMatch: 'full'},
 
-  { path: '404', component: NotFoundPageComponent },
   { path: 'dashboard', component: DashboardComponent},
   { path: 'check-form', component: CheckTripFormComponent },
-  { path: 'details/:id', component: CheckTripDetailsComponent }
+  { path: 'details/:id', component: CheckTripDetailsComponent },
+  { path: '**', redirectTo: '/404'},
+  { path: '404', component: NotFoundPageComponent }
 ];
 
 @NgModule({
