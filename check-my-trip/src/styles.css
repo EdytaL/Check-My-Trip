@@ -1,3 +1,5 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 * {
   box-sizing: border-box;
   margin: 0 ;
@@ -7,7 +9,6 @@ body, html {
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
-
 .background-img {
   background-image: url("/assets/img/aeroplane-air-travel-aircraft-249581.jpg");
   height: 100%;
@@ -126,7 +127,7 @@ body, html {
 
 /* Main content static */
 .section-content-static {
-  margin-top: 20px;
+  margin-top: 40px;
   padding: 35px 40px;
   font-family: 'Amatic SC', cursive;
   color: #524338;
@@ -152,4 +153,52 @@ body, html {
 .section-content-static .btn-find:hover {
   background-color: #524338;
   color: #EBE5D7;
+}
+.card {
+  background-color: #524338;
+  color: #EBE5D7;
+  margin: 80px auto;
+  width: 60%;
+  opacity: 0.8;
+  padding: 30px;
+  -webkit-box-shadow: 0px 35px 44px -22px rgba(0,0,0,0.72)!important;
+  -moz-box-shadow: 0px 35px 44px -22px rgba(0,0,0,0.72) !important;
+  box-shadow: 0px 35px 44px -22px #1f181b !important;
+}
+.mat-card-header-text {
+  margin: 0 !important;
+}
+.form-container form{
+  display: flex;
+  flex-direction: column;
+}
+.form-container form> * {
+  width: 100%;
+}
+mat-form-field.mat-hint {
+  color: #EBE5D7 !important;
+}
+.mat-hint, .mat-form-field-label {
+  color: #EBE5D7 !important;
+}
+.mat-input-underline, .mat-form-field-underline {
+  background-color: #EBE5D7;
+}
+.mat-input-element {
+  caret-color: #EBE5D7;
+}
+.matInput {
+  border-color: #EBE5D7;
+}
+mat-form-field.mat-focused input{
+  border-color: #EBE5D7;
+}
+.btn-form-submit {
+  float: right !important;
+  width: 30% !important;
+  margin: 30px 0 0 !important;
+  color: #524338 !important;
+}
+.card .mat-card-title {
+  font-size: 20px;
 }
