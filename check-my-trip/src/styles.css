@@ -124,20 +124,32 @@ body, html {
   font-size: 20px;
 }
 
-/* 404 page */
-.section-not-found-page {
+/* Main content static */
+.section-content-static {
   margin-top: 20px;
   padding: 35px 40px;
   font-family: 'Amatic SC', cursive;
   color: #524338;
   text-align: center;
 }
-.section-not-found-page h1 {
+.section-content-static h1 {
   font-size: 150px;
 }
-.section-not-found-page span {
+.section-content-static span {
   font-size: 40px;
 }
-.section-not-found-page a {
+.section-content-static a {
   color: #524338;
+}
+
+/** No CSS for this example */
+.section-content-static  .btn-find {
+  color: #524338;
+  font-family: 'Amatic SC', cursive;
+  background-color: transparent;
+  padding-top: 15px;
+}
+.section-content-static .btn-find:hover {
+  background-color: #524338;
+  color: #EBE5D7;
 }

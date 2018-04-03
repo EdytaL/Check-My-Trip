@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+// Material UI
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+
 import { AppComponent } from './app.component';
 import { CheckTripFormComponent } from './check-trip-form/check-trip-form.component';
 import { CheckTripDetailsComponent } from './check-trip-details/check-trip-details.component';
@@ -24,7 +27,10 @@ import { FooterComponent } from './shared/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+
+    MatButtonModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
