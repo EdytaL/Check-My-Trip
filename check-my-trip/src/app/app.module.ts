@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from "@angular/forms";
 
 // Material UI
 import {
@@ -48,6 +50,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { CheckTripFormService } from "./check-trip-form/check-trip-form.service";
 
 @NgModule({
   declarations: [
@@ -63,6 +66,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
+    HttpClientModule,
+    ReactiveFormsModule,
 
     CdkTableModule,
     BrowserAnimationsModule,
@@ -99,7 +104,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     MatToolbarModule,
     MatTooltipModule
   ],
-  providers: [],
+  providers: [CheckTripFormService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
