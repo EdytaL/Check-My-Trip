@@ -11,17 +11,18 @@
   </mat-card-content>
   <div class="form-container">
     <form [formGroup]="checkInForm" (ngSubmit)="onSubmit()">
-      <mat-form-field hintLabel="Max 10 characters">
-        <input matInput #input [formControlName]="'bookingCode'" minlength="5" maxlength="6" placeholder="Booking code">
-
+      <mat-form-field>
+        <input matInput #input [formControlName]="'bookingCode'" minlength="5" maxlength="6" pattern="^[a-zA-Z2-9]*$" placeholder="Booking code">
+        <mat-error *ngIf="checkInForm.controls.bookingCode.invalid">{{ invalidBookignCodeMessage }}</mat-error>
       </mat-form-field>
 
-      <mat-form-field hintLabel="Max 10 characters">
-        <input matInput #input [formControlName]="'familyName'" maxlength="10" placeholder="Family name">
+      <mat-form-field>
+        <input matInput #input [formControlName]="'familyName'" minlength="2" maxlength="30" pattern="^[a-zA-Z]*$" placeholder="Family name">
+        <mat-error *ngIf="checkInForm.controls.familyName.invalid">{{ invalidFamilyNameMessage }}</mat-error>
 
       </mat-form-field>
       <div class="btn-form-submit-wrapper">
-        <button mat-raised-button [disabled]="!checkInForm.valid" type="submit" class="btn-form-submit">Find</button>
+        <button mat-raised-button [disabled]="checkInForm.invalid" type="submit" class="btn-form-submit">Find</button>
       </div>
 
     </form>

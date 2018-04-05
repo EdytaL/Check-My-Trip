@@ -9,7 +9,10 @@ import { CheckTripFormService } from "./check-trip-form.service";
 })
 export class CheckTripFormComponent implements OnInit {
 
-  checkInForm: FormGroup
+  private invalidBookignCodeMessage: string;
+  private invalidFamilyNameMessage: string;
+
+  checkInForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -21,6 +24,33 @@ export class CheckTripFormComponent implements OnInit {
       bookingCode: ['', Validators.required ],
       familyName: ['', Validators.required]
     })
+
+    this.checkInForm.controls.bookingCode.valueChanges
+      .subscribe(
+        change => {
+          let controlErrors = this.checkInForm.controls.bookingCode.errors;
+          if(controlErrors) {
+            if(controlErrors.pattern) {
+              this.invalidBookignCodeMessage = 'Booking code can contain only letters and digits in the range 2 and 9';
+            } else if (controlErrors.minlength) {
+              this.invalidBookignCodeMessage = 'Min length 5 characters';
+            }
+          }
+        }
+      );
+    this.checkInForm.controls.familyName.valueChanges
+      .subscribe(
+        change => {
+          let controlErrors = this.checkInForm.controls.familyName.errors;
+          if(controlErrors) {
+            if (controlErrors.minlength) {
+              this.invalidFamilyNameMessage = 'Min length 2 characters';
+            } else if (controlErrors.pattern) {
+              this.invalidFamilyNameMessage = 'Family name can contain only letters'
+            }
+          }
+        }
+      );
   }
   private onSubmit() {
     this.service.getTripDetails(this.checkInForm.getRawValue())
