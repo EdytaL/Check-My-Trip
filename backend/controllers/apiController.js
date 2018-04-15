@@ -1,5 +1,5 @@
-var TripDetails = require('../models/tripDetails');
-var bodyParser = require('body-parser');
+const TripDetails = require('../models/tripDetails');
+const bodyParser = require('body-parser');
 
 module.exports = function(app) {
     // parse data before use

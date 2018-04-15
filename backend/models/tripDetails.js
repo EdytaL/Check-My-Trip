@@ -1,125 +1,64 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var Schema = mongoose.Schema;
+const codeNamePairSchema = new mongoose.Schema({
+    code: String,
+    name: String
+});
 
-var tripDetailsSchema = {
+const airportDetailsSchema = new mongoose.Schema({
+    IATACode: String,
+    name: String,
+    country: String,
+    city: String
+});
 
-    "bookingCode": String,
-    "itinerary": {
-        "type": String,
-        "connections": Object
-            // [
-        // {
-        //     "duration": String,
-        //     "origin": {
-        //         "IATACode": String,
-        //         "name": String,
-        //         "city": {
-        //             "IATACode": String,
-        //             "name": String,
-        //             "country": {
-        //                 "code": String,
-        //                 "name": String
-        //             }
-        //         }
-        //     },
-        //     "destination": {
-        //         "IATACode": String,
-        //         "name": String,
-        //         "city": {
-        //             "IATACode": String,
-        //             "name": String,
-        //             "country": {
-        //                 "code": String,
-        //                 "name": String
-        //             }
-        //         },
-        //     },
-        //     "segments": [
-        //         {
-        //             "type": String,
-        //             "informational": Boolean,
-        //             "departFrom": {
-        //                 "IATACode": String,
-        //                 "name": String,
-        //                 "city": {
-        //                     "IATACode": String,
-        //                     "name": String,
-        //                     "country": {
-        //                         "code": String,
-        //                         "name": String
-        //                     }
-        //                 },
-        //             },
-        //             "arriveOn": {
-        //                 "IATACode": String,
-        //                 "name": String,
-        //                 "city": {
-        //                     "IATACode": String,
-        //                     "name": String,
-        //                     "country": {
-        //                         "code": String,
-        //                         "name": String
-        //                     }
-        //                 },
-        //             },
-        //             "marketingFlight": {
-        //                 "number": String,
-        //                 "carrier": {
-        //                     "code": String,
-        //                     "name": String
-        //                 },
-        //                 "status": {
-        //                     "code": String,
-        //                     "name": String
-        //                 },
-        //                 "numberOfStops": 0,
-        //                 "sellingClass": {
-        //                     "code": String
-        //                 },
-        //                 "operatingFlight": {
-        //                     "number": String,
-        //                     "carrier": {
-        //                         "code": String,
-        //                         "name": String
-        //                     },
-        //                     "duration": String,
-        //                     "flown": Boolean,
-        //                     "checkInStart": String,
-        //                     "localCheckInStart": String,
-        //                     "checkInEnd": String,
-        //                     "localCheckInEnd": String,
-        //                     "scheduledArrival": String,
-        //                     "localScheduledArrival": String,
-        //                     "scheduledDeparture": String,
-        //                     "localScheduledDeparture": String,
-        //                     "arrivalTerminal": {
-        //                         "name": String
-        //                     },
-        //                     "cabin": {
-        //                         "code": String,
-        //                         "name": String
-        //                     },
-        //                     "equipment": {
-        //                         "code": String,
-        //                         "name": String
-        //                     }
-        //                 }
-        //             }
-        //         }]
-        // }]
-    },
-    "passenger": {
-        "firstName": String,
-        "lastName": String,
-        "title": {
-            "code": String,
-            "name": String
-        }
-    }
+const operatingFlightSchema = new mongoose.Schema({
+    checkInStart: String,
+    localCheckInStart: String,
+    checkInEnd: String,
+    localCheckInEnd: String,
+    scheduledArrival: String,
+    localScheduledArrival: String,
+    scheduledDeparture: String,
+    localScheduledDeparture: String,
+    arrivalTerminal: String,
+    cabin: codeNamePairSchema,
+    equipment: codeNamePairSchema
+});
 
-};
+const marketingFlightInfoSchema = new mongoose.Schema({
+    number: String,
+    carrier: String,
+    status: codeNamePairSchema,
+    numberOfStops: Number
+});
 
-var TripDetails = mongoose.model('TripDetails', tripDetailsSchema, 'tripdetails');
+const connectionSchema = new mongoose.Schema({
+    duration: String,
+    origin: airportDetailsSchema,
+    destination: airportDetailsSchema,
+    marketingFlightInfo: marketingFlightInfoSchema,
+    operatingFlightInfo: operatingFlightSchema
+});
+
+const itinerarySchema = new mongoose.Schema({
+    type: String,
+    connections: [connectionSchema]
+});
+
+const passengerSchema = new mongoose.Schema({
+    firstName: String,
+    lastName: String,
+    title: codeNamePairSchema,
+    contactEmail: String
+});
+
+const tripDetails = new mongoose.Schema({
+    bookingCode: String,
+    itinerary: itinerarySchema,
+    passenger: passengerSchema
+});
+
+const TripDetails = mongoose.model('TripDetails', tripDetails, 'tripdetails');
 
 module.exports = TripDetails;
