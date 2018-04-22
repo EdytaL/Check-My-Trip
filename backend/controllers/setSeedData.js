@@ -6,8 +6,7 @@ module.exports = function(app) {
         // seed database
         TripDetails.find({}, function (err, collection) {
             if(err) res.send(err);
-            console.log(collection);
-            if(collection.length === 0) {
+            if(collection.length === 0) {s
                 let tripSeed = new TripDetails(
                 {
                     "bookingCode": "PZIGZ3",
