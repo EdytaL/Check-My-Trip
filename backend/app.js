@@ -8,7 +8,7 @@ const apiController = require('./controllers/apiController');
 const port = process.env.PORT || 4000;
 
 app.set('view engine', 'ejs');
-mongoose.connect(config.getDbConnectionUrl());
+mongoose.connect(config.dbConnectionUri);
 seedController(app);
 apiController(app);
 
