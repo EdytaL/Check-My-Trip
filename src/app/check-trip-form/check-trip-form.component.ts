@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 import { FormBuilder, FormGroup, Validator, Validators } from "@angular/forms";
 import { CheckTripFormService } from "./check-trip-form.service";
 
@@ -16,7 +17,8 @@ export class CheckTripFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private service: CheckTripFormService
+    private service: CheckTripFormService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -52,13 +54,10 @@ export class CheckTripFormComponent implements OnInit {
         }
       );
   }
-  private onSubmit() {
-    this.service.getTripDetails(this.checkInForm.getRawValue())
-      .subscribe(
-        data => {
-          console.log(data);
-        }
-      )
+  onSubmit() {
+    let bookingCode = this.checkInForm.controls.bookingCode.value;
+    let familyName = this.checkInForm.controls.familyName.value.toUpperCase();
+    this.router.navigate(['/details/' + bookingCode + '/' + familyName]);
   }
 
 }

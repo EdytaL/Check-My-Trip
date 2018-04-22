@@ -11,7 +11,7 @@ const routes: Routes = [
 
   { path: 'dashboard', component: DashboardComponent},
   { path: 'check-form', component: CheckTripFormComponent },
-  { path: 'details/:id', component: CheckTripDetailsComponent },
+  { path: 'details/:bookingCode/:familyName', component: CheckTripDetailsComponent },
   { path: '**', redirectTo: '/404'},
   { path: '404', component: NotFoundPageComponent }
 ];

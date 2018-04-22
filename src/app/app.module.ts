@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from "@angular/forms";
+import { CheckTripDetailsService} from "./check-trip-details/check-trip-details.service";
 
 // Material UI
 import {
@@ -104,7 +105,10 @@ import { CheckTripFormService } from "./check-trip-form/check-trip-form.service"
     MatToolbarModule,
     MatTooltipModule
   ],
-  providers: [CheckTripFormService],
+  providers: [
+    CheckTripFormService,
+    CheckTripDetailsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
