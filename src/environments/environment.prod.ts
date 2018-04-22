@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  name: 'prod',
+  serverURL: 'https://get-a-way.herokuapp.com'
 };

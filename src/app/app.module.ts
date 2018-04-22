@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from "@angular/forms";
 import { CheckTripDetailsService} from "./check-trip-details/check-trip-details.service";
+import { ConfigService } from "./shared/services/config.service";
 
 // Material UI
 import {
@@ -106,6 +107,7 @@ import { CheckTripFormService } from "./check-trip-form/check-trip-form.service"
     MatTooltipModule
   ],
   providers: [
+    ConfigService,
     CheckTripFormService,
     CheckTripDetailsService
   ],
