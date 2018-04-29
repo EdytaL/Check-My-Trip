@@ -7,11 +7,11 @@ import { NotFoundPageComponent} from "./not-found-page/not-found-page.component"
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/app/dashboard', pathMatch: 'full' },
 
-  { path: 'dashboard', component: DashboardComponent},
-  { path: 'check-form', component: CheckTripFormComponent },
-  { path: 'details/:bookingCode/:familyName', component: CheckTripDetailsComponent },
+  { path: 'app/dashboard', component: DashboardComponent},
+  { path: 'app/check-form', component: CheckTripFormComponent },
+  { path: 'app/details/:bookingCode/:familyName', component: CheckTripDetailsComponent },
   { path: '**', redirectTo: '/404'},
   { path: '404', component: NotFoundPageComponent }
 ];

@@ -8,7 +8,7 @@ module.exports = function(app) {
     // encode url placeholders
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    app.get('/api/trip/details/:bookingCode/:familyName', function(req, res) {
+    app.get('/trip/details/:bookingCode/:familyName', function(req, res) {
         // use mongoose model to find url parameters in document
         TripDetails.findOne({ bookingCode: req.params.bookingCode })
             .where('passenger.lastName')
